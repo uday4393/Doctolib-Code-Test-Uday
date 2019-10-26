@@ -11,12 +11,13 @@ export default async function getAvailabilities(date) {
     });
   }
 
+
   const events = await knex
     .select("kind", "starts_at", "ends_at", "weekly_recurring")
     .from("events")
     .where(function() {
       this.where("weekly_recurring", true).orWhere("ends_at", ">", +date);
-    });
+    }).orderBy('kind', 'DESC');
 
   for (const event of events) {
     for (
@@ -34,6 +35,8 @@ export default async function getAvailabilities(date) {
       }
     }
   }
+
+  // console.log('Modified Availabilities>>>', availabilities,'SLOTS>>>>', Array.from(availabilities.values()));
 
   return Array.from(availabilities.values())
 }

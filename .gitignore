@@ -79,5 +79,8 @@ typings/
 # Serverless directories
 .serverless
 
+.idea
+package-lock.json
+
 
 # End of https://www.gitignore.io/api/git,node
