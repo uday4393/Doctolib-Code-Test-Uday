@@ -24,3 +24,10 @@ function getAvailabilities(date, numberOfDays = 7) {}
 ## How to run
  * Install [node](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/en/)
  * Run `yarn && yarn test`, focus on `src` folder, you are ready!
+
+
+
+## Solution
+``` 1) Fixed Test Cases.
+    2) Refactored code to accept more than 7 days, ex: 12 days - test case covering this scenario.
+```
