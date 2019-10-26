@@ -1,11 +1,14 @@
 import moment from "moment";
 import knex from "knexClient";
 
-export default async function getAvailabilities(date) {
+export default async function getAvailabilities(date, numberofDays = 7) {
   const availabilities = new Map();
-  for (let i = 0; i < 7; ++i) {
+  for (let i = 0; i < numberofDays; ++i) {
     const tmpDate = moment(date).add(i, "days");
-    availabilities.set(tmpDate.format("d"), {
+    let index = parseInt(tmpDate.format("d"));
+    // Incerementing index as it resets after 7 days
+    if( i > 6) index = index+7;
+    availabilities.set(index, {
       date: tmpDate.toDate(),
       slots: []
     });
@@ -25,7 +28,8 @@ export default async function getAvailabilities(date) {
       date.isBefore(event.ends_at);
       date.add(30, "minutes")
     ) {
-      const day = availabilities.get(date.format("d"));
+      let index = parseInt(date.format("d"));
+      const day = availabilities.get(index);
       if (event.kind === "opening") {
         day.slots.push(date.format("H:mm"));
       } else if (event.kind === "appointment") {

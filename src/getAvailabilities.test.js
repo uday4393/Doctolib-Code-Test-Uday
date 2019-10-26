@@ -95,4 +95,15 @@ describe("getAvailabilities", () => {
       ]);
     });
   });
+
+  describe("case 4", () => {
+    it("test 1", async () => {
+      let numberOfDays = 12
+      const availabilities = await getAvailabilities(new Date("2014-08-10"), numberOfDays);
+      expect(availabilities.length).toBe(numberOfDays);
+      for (let i = 0; i < numberOfDays; ++i) {
+        expect(availabilities[i].slots).toEqual([]);
+      }
+    });
+  });
 });
