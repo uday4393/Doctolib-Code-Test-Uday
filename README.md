@@ -28,6 +28,9 @@ function getAvailabilities(date, numberOfDays = 7) {}
 
 
 ## Solution
-``` 1) Fixed Test Cases.
+```
+    1) Fixed Test Cases.
+```
+```
     2) Refactored code to accept more than 7 days, ex: 12 days - test case covering this scenario.
 ```
